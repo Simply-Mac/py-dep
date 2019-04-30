@@ -1,6 +1,6 @@
 #######################################################################################################################
 #
-# Device Enrollment Program (DEP) API Library Python 3.x Module
+# Device Enrollment Program (DEP) API Library Python 3.6+ Module
 #
 # Overview
 # The purpose of this Python module is to provide a standard Python module to interact with the DEP/ACC API.

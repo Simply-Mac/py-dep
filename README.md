@@ -17,7 +17,7 @@ Please contact your Apple representative for more information.
 Requirements
 ============
 
-- Python 3.x or later
+- Python 3.6 or later
 - Contents of requirements.txt in your Python environment
 - DEP client certs (UAT/PROD) signed by Apple
 
@@ -30,54 +30,62 @@ we could use the following code:
 #### UAT Example
 
 ```python
-# Get device details
 import os
 from datetime import datetime
 from py-dep import dep
 
+# Setup environment variables
 os.environ['DEP_ENV'] = 'UAT'
 os.environ['DEP_SHIPTO'] = '0000052010'
 os.environ['DEP_RESELLER_ID'] = '16FCE4A0'
 os.environ['DEP_UAT_CERT'] = '/path/to/acc/uat/cert.pem'
 os.environ['DEP_UAT_PRIVATE_KEY'] = '/path/to/acc/uat/cert_private_key.pem'
 
+# Create a list of Device objects
 d1 = dep.Device("33645004YAM", "A123456").json()
 d2 = dep.Device("33645006YAM", "A123456").json()
 devices1 = [d1, d2]
 
+# Create a list of Delivery objects and add Device objects list
 delivery1 = dep.Delivery('D1.2', datetime(2014, 10, 10, 5, 10, 00), devices1).json()
 deliveries = [delivery1]
 
+# Create an Order objects and add Delivery objects list
 order = dep.Order("ORDER_900123", datetime(2014, 8, 28, 10, 10, 10), "OR", "19827", "PO_12345", deliveries).json()
 
-dep.bulk_enroll_devices("TXN_001122", order)
+# Call the Bulk Enroll Devices endpoint with Order object
+post_data, response_data, error_code, error_message, call_type = dep.bulk_enroll_devices("TXN_001122", order)
 ```
 
 
 #### PROD Example
 
 ```python
-# Get device details
 import os
 from datetime import datetime
 from py-dep import dep
 
+# Setup environment variables
 os.environ['DEP_ENV'] = 'PROD'
 os.environ['DEP_SHIPTO'] = '0000052010'
 os.environ['DEP_RESELLER_ID'] = '16FCE4A0'
 os.environ['DEP_UAT_CERT'] = '/path/to/acc/uat/cert.pem'
 os.environ['DEP_UAT_PRIVATE_KEY'] = '/path/to/acc/uat/cert_private_key.pem'
 
+# Create a list of Device objects
 d1 = dep.Device("33645004YAM", "A123456").json()
 d2 = dep.Device("33645006YAM", "A123456").json()
 devices1 = [d1, d2]
 
+# Create a list of Delivery objects and add Device objects list
 delivery1 = dep.Delivery('D1.2', datetime(2014, 10, 10, 5, 10, 00), devices1).json()
 deliveries = [delivery1]
 
+# Create an Order objects and add Delivery objects list
 order = dep.Order("ORDER_900123", datetime(2014, 8, 28, 10, 10, 10), "OR", "19827", "PO_12345", deliveries).json()
 
-dep.bulk_enroll_devices("TXN_001122", order)
+# Call the Bulk Enroll Devices endpoint with Order object
+post_data, response_data, error_code, error_message, call_type = dep.bulk_enroll_devices("TXN_001122", order)
 ```
 
 

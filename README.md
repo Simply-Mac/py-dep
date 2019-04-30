@@ -46,11 +46,11 @@ d1 = dep.Device("33645004YAM", "A123456").json()
 d2 = dep.Device("33645006YAM", "A123456").json()
 devices1 = [d1, d2]
 
-# Create a list of Delivery objects and add Device objects list
+# Create a list of Delivery objects and add Device objects' list
 delivery1 = dep.Delivery('D1.2', datetime(2014, 10, 10, 5, 10, 00), devices1).json()
 deliveries = [delivery1]
 
-# Create an Order objects and add Delivery objects list
+# Create an Order object and add Delivery objects list
 order = dep.Order("ORDER_900123", datetime(2014, 8, 28, 10, 10, 10), "OR", "19827", "PO_12345", deliveries).json()
 
 # Call the Bulk Enroll Devices endpoint with Order object
@@ -77,11 +77,11 @@ d1 = dep.Device("33645004YAM", "A123456").json()
 d2 = dep.Device("33645006YAM", "A123456").json()
 devices1 = [d1, d2]
 
-# Create a list of Delivery objects and add Device objects list
+# Create a list of Delivery objects and add Device objects' list
 delivery1 = dep.Delivery('D1.2', datetime(2014, 10, 10, 5, 10, 00), devices1).json()
 deliveries = [delivery1]
 
-# Create an Order objects and add Delivery objects list
+# Create an Order object and add Delivery objects list
 order = dep.Order("ORDER_900123", datetime(2014, 8, 28, 10, 10, 10), "OR", "19827", "PO_12345", deliveries).json()
 
 # Call the Bulk Enroll Devices endpoint with Order object
